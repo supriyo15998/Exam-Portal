@@ -1,0 +1,51 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row mt-20">
+            <div class="col-md-6 offset-md-3">
+                <mat-card>
+                    <div class="container text-center">
+                        <img src="../../../assets/logo.png" alt="logo" height="150" width="150" />
+                    </div>
+                    <h1 class="text-center">Login Here</h1>
+                    <form action="#" #loginForm="ngForm" (ngSubmit)="login()">
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input 
+                                type="email" 
+                                required
+                                pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+\.[a-z]+$"
+                                matInput 
+                                [(ngModel)]="user.email"
+                                #email="ngModel"
+                                name="email"
+                                placeholder="Enter Email"
+                            />
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+                        <div *ngIf="email.invalid && email.touched" class="alert alert-danger">
+                            <div *ngIf="email.errors.required">Email is required</div>
+                            <div *ngIf="email.errors.pattern">Email is invalid</div>
+                        </div>
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input 
+                                type="password" 
+                                required
+                                matInput 
+                                [(ngModel)] = "user.password"
+                                name="password"
+                                #password="ngModel"
+                                placeholder="Enter Password"
+                            />
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+                        <div *ngIf="password.invalid && password.touched" class="alert alert-danger">
+                            <div *ngIf="password.errors.required">Password is required</div>
+                        </div>
+                        <button type="submit" class="full-width" mat-raised-button color="primary" [disabled]="!loginForm.valid">Login</button>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
