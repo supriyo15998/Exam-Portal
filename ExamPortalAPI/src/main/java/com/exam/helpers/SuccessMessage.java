@@ -5,7 +5,6 @@ public class SuccessMessage {
 
 	public SuccessMessage() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public SuccessMessage(String message) {
@@ -20,5 +19,5 @@ public class SuccessMessage {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+
 }

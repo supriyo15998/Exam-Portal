@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.exam.entities.User;
-import com.exam.exceptions.UserNotFoundException;
 import com.exam.helpers.Helper;
 import com.exam.repositories.UserRepository;
 
@@ -19,7 +18,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
+
 		User user = this.userRepository.findByUsername(username);
 		if (user == null) {
 			throw new UsernameNotFoundException(Helper.USER_NOT_FOUND);

@@ -5,7 +5,6 @@ public class JwtResponse {
 
 	public JwtResponse() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public JwtResponse(String token) {
@@ -20,5 +19,5 @@ public class JwtResponse {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	
+
 }
