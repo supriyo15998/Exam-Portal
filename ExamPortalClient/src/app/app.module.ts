@@ -17,6 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { authInterceptorProviders } from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,9 +40,12 @@ import { MatCardModule } from '@angular/material/card';
     FormsModule,
     MatSnackBarModule,
     MatCardModule,
+    MatToolbarModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    authInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
