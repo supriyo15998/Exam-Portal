@@ -36,8 +36,10 @@ public class UserController {
 		user.setProfile("default.png");
 		Set<UserRole> roles = new HashSet<>();
 		Role role = new Role();
-		role.setRoleId(45L);
+		role.setRoleId(44L);
+//		role.setRoleId(45L);
 		role.setRoleName(Helper.NORMAL_USER);
+//		role.setRoleName(Helper.ADMIN_USER);
 		UserRole userRole = new UserRole();
 		userRole.setUser(user);
 		userRole.setRole(role);

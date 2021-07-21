@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 // import { User } from 'src/app/entities/user';
 
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
     username: '',
     password: ''
   }
-  constructor(private snackBar: MatSnackBar, private loginService: LoginService) { }
+  constructor(private snackBar: MatSnackBar, private loginService: LoginService, private router: Router) { }
 
   ngOnInit (): void {
   }
@@ -37,6 +38,18 @@ export class LoginComponent implements OnInit {
               panelClass: ['success-snackbar']
             })
             //redirect based on role
+            if (this.loginService.getUserRole() == "ADMIN") {
+              this.router.navigate(['admin'])
+              this.loginService.loginStatusSubject.next(true);
+              // window.location.href = "/admin"
+            } else if (this.loginService.getUserRole() == "NORMAL") {
+              this.router.navigate(['user-dashboard'])
+              this.loginService.loginStatusSubject.next(true);
+              // window.location.href = "/user-dashboard"
+            } else {
+              this.loginService.logout();
+              // location.reload()
+            }
           },
           error => {
             console.log(error);
