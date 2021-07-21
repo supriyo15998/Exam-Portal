@@ -6,39 +6,40 @@
   </button>
   <span>ExamPortal</span>
   <span class="example-spacer"></span>
-  <a 
+  <div class="navbar-links">
+    <button 
+    mat-raised-button
+    color="primary"
     *ngIf="!isLoggedIn"
-    routerLink="/login"
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon">
+    class="mr-20"
+    routerLink="/login">
     <!-- <mat-icon>login</mat-icon> -->
     Login
-  </a>
-  <a 
-    *ngIf="!isLoggedIn"
-    routerLink="/signup"
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon">
-    <!-- <mat-icon>auto_stories</mat-icon> -->
-  Register
-  </a>
-  <a 
-    *ngIf="isLoggedIn && user"
-    mat-icon-button
-    class="example-icon favorite-icon ml-20"
-    aria-label="Example icon-button with heart icon">
-    <!-- <mat-icon>auto_stories</mat-icon> -->
-    {{ user.username }}
-  </a>
-  <a 
-    *ngIf="isLoggedIn"
-    (click)="logout()"
-    mat-icon-button
-    class="example-icon favorite-icon mr-20"
-    aria-label="Example icon-button with heart icon">
-    <!-- <mat-icon>auto_stories</mat-icon> -->
-    Logout
-  </a>
+  </button>
+    <button 
+    mat-raised-button
+    color="primary"
+      *ngIf="!isLoggedIn"
+      routerLink="/signup">
+      <!-- <mat-icon>auto_stories</mat-icon> -->
+    Register
+    </button>
+    <button 
+      *ngIf="isLoggedIn && user"
+      mat-raised-button
+      color="primary"
+      >
+      <!-- <mat-icon>auto_stories</mat-icon> -->
+      {{ user.username }}
+    </button>
+    <button
+      *ngIf="isLoggedIn"
+      mat-raised-button
+      color="primary"
+      (click)="logout()">
+      <!-- <mat-icon>auto_stories</mat-icon> -->
+      Logout
+    </button>
+  </div>
+  
 </mat-toolbar>

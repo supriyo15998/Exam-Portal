@@ -23,16 +23,15 @@ export class SignupComponent implements OnInit {
   }
   registerFormSubmit () {
 
-    console.log("submitted");
     this.userService.addUser(this.user).subscribe(
       data => {
-        console.log(data);
         this.snackbar.open(`${data.username} registered successfully !`, '', {
           duration: 2000,
           horizontalPosition: 'left',
           verticalPosition: 'bottom',
           panelClass: ['success-snackbar']
         });
+        this.form.reset();
       },
       error => {
         let errorMsg = "";
