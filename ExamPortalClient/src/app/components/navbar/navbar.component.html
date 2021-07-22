@@ -13,7 +13,6 @@
     *ngIf="!isLoggedIn"
     class="mr-20"
     routerLink="/login">
-    <!-- <mat-icon>login</mat-icon> -->
     Login
   </button>
     <button 
@@ -21,23 +20,22 @@
     color="primary"
       *ngIf="!isLoggedIn"
       routerLink="/signup">
-      <!-- <mat-icon>auto_stories</mat-icon> -->
     Register
     </button>
     <button 
       *ngIf="isLoggedIn && user"
       mat-raised-button
+      routerLink="/admin/profile"
       color="primary"
       >
-      <!-- <mat-icon>auto_stories</mat-icon> -->
       {{ user.username }}
     </button>
+
     <button
       *ngIf="isLoggedIn"
       mat-raised-button
       color="primary"
       (click)="logout()">
-      <!-- <mat-icon>auto_stories</mat-icon> -->
       Logout
     </button>
   </div>

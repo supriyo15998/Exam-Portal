@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="user">
     <h1 class="text-center">Your Profile Details</h1>
     <mat-card-content>
         <div class="bootstrap-wrapper">
@@ -9,21 +9,49 @@
                         alt="profile_pic"
                         class="profile-image"
                     >
-                    <h1 class="mt-20">Username Here</h1>
+                    <h1 class="mt-20">{{ user.firstName }} {{ user.lastName }}</h1>
                 </div>
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
-                        <table class="table">
+                        <table class="table text-center">
+                            <tr>
+                                <td>User Id</td>
+                                <td>EXAM-{{ user.id }}</td>
+                            </tr>
                             <tr>
                                 <td>Username</td>
-                                <td>username here</td>
+                                <td>{{ user.username }}</td>
+                            </tr>
+                            <tr>
+                                <td>Full Name</td>
+                                <td>{{ user.firstName }} {{ user.lastName }}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone Number</td>
+                                <td>{{ user.phone }}</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <td>Role</td>
+                                <td>{{ user.authorities[0].authority }}</td>
+                            </tr>
+                            <tr>
+                                <td>Status</td>
+                                <td><span class="badge bg-{{ user.enabled ? 'success' : 'danger'}}">{{ user.enabled ? 'ACTIVE' : 'INACTIVE' }}</span></td>
                             </tr>
                         </table>
-
 
                     </div>
                 </div>
             </div>
         </div>
+        
     </mat-card-content>
+    <mat-card-actions class="text-center">
+        <button mat-raised-button color="primary">UPDATE</button>
+        <button mat-raised-button color="accent">SHARE</button>
+    </mat-card-actions>
 </mat-card>
