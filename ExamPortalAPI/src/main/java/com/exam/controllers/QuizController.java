@@ -64,7 +64,6 @@ public class QuizController {
 	@DeleteMapping("/delete/{id}")
 	public SuccessMessage deleteQuiz(@PathVariable("id") String id)
 			throws NumberFormatException, QuizNotFoundException {
-		System.out.println("==========in controller==============");
 		this.quizService.deleteQuiz(Long.parseLong(id));
 		return new SuccessMessage("Quiz id: " + id + " deleted successfully !");
 	}
