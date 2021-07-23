@@ -2,6 +2,7 @@ package com.exam.controllers.handlers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -12,10 +13,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import com.exam.exceptions.CategoryNotFoundException;
+import com.exam.exceptions.QuizNotFoundException;
 import com.exam.exceptions.TokenExpiredException;
 import com.exam.exceptions.UserAlreadyExistsException;
 import com.exam.exceptions.UserNotFoundException;
 import com.exam.exceptions.validations.ValidateCategoryException;
+import com.exam.exceptions.validations.ValidateQuizException;
 import com.exam.helpers.ErrorMessage;
 
 import io.jsonwebtoken.ExpiredJwtException;
@@ -87,20 +90,38 @@ public class ControllerAdvice {
 		errors.add(ex.getMessage());
 		return new ErrorMessage(HttpStatus.NOT_FOUND.toString(), errors);
 	}
-	
+
 	@ExceptionHandler(ValidateCategoryException.class)
 	@ResponseStatus(code = HttpStatus.UNPROCESSABLE_ENTITY)
 	public ErrorMessage handleValidateCategoryException(ValidateCategoryException ex) {
-		List<String> errors = new ArrayList<>();
-		errors.add(ex.getMessage());
+		List<String> errors = ex.getErrors().stream().map(err -> err.getDefaultMessage()).collect(Collectors.toList());
 		return new ErrorMessage(HttpStatus.UNPROCESSABLE_ENTITY.toString(), errors);
 	}
+	
+	@ExceptionHandler(ValidateQuizException.class)
+	@ResponseStatus(code = HttpStatus.UNPROCESSABLE_ENTITY)
+	public ErrorMessage handleValidateQuizException(ValidateQuizException ex) {
+		List<String> errors = ex.getErrors().stream().map(err -> err.getDefaultMessage()).collect(Collectors.toList());
+		return new ErrorMessage(HttpStatus.UNPROCESSABLE_ENTITY.toString(), errors);
+//		List<String> errors = new ArrayList<>();
+//		errors.add(ex.getMessage());
+//		return new ErrorMessage(HttpStatus.UNPROCESSABLE_ENTITY.toString(), errors);
+	}
+
 	@ExceptionHandler(NumberFormatException.class)
 	@ResponseStatus(code = HttpStatus.UNPROCESSABLE_ENTITY)
 	public ErrorMessage handleNumberFormatException(NumberFormatException ex) {
 		List<String> errors = new ArrayList<>();
 		errors.add(ex.getMessage());
 		return new ErrorMessage(HttpStatus.UNPROCESSABLE_ENTITY.toString(), errors);
+	}
+
+	@ExceptionHandler(QuizNotFoundException.class)
+	@ResponseStatus(code = HttpStatus.NOT_FOUND)
+	public ErrorMessage handleQuizNotFoundException(QuizNotFoundException ex) {
+		List<String> errors = new ArrayList<>();
+		errors.add(ex.getMessage());
+		return new ErrorMessage(HttpStatus.NOT_FOUND.toString(), errors);
 	}
 
 }

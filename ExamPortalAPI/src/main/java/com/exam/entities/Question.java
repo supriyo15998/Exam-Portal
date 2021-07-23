@@ -17,6 +17,7 @@ public class Question {
 	private Long questionId;
 	@Column(length = 1000)
 	private String content;
+	@Column(nullable = true)
 	private String image;
 
 	private String option1;

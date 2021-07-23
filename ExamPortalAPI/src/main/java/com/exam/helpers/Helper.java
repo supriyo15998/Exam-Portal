@@ -7,4 +7,5 @@ public class Helper {
 	public static final String ADMIN_USER = "ADMIN";
 	public static final String USER_DELETED = "User Deleted Successfully !";
 	public static final String NO_CATEGORY_FOUND = "No Category Found !";
+	public static final String NO_QUIZ_FOUND = "No Quiz Found !";
 }
