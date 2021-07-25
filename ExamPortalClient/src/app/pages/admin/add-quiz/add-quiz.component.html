@@ -1,0 +1,109 @@
+<mat-progress-bar *ngIf="isLoading" mode="query" class="mt-20"></mat-progress-bar>
+<mat-card class="mt-20">
+    <h1>Add New Quiz</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <form #addQuizForm="ngForm" (ngSubmit)="addQuiz()">
+                    <mat-form-field class="w100" appearance="outline">
+                        <mat-label>Quiz Title</mat-label>
+                        <input 
+                            type="text" 
+                            [(ngModel)]="quiz.title"
+                            #title="ngModel"
+                            name="title" 
+                            matInput 
+                            required
+                            placeholder="Enter Quiz Title" 
+                        />
+                    </mat-form-field>
+                    <div *ngIf="title.invalid && title.touched" class="alert alert-danger">
+                        <div *ngIf="title.errors.required">Quiz Title is required</div>
+                    </div>
+                    <mat-form-field class="w100" appearance="outline">
+                        <mat-label>Quiz Description</mat-label>
+                        <textarea 
+                            name="description" 
+                            matInput 
+                            [(ngModel)]="quiz.description"
+                            #description="ngModel"
+                            required
+                            placeholder="Enter Description" 
+                        ></textarea>
+                    </mat-form-field>
+                    <div *ngIf="description.invalid && description.touched" class="alert alert-danger">
+                        <div *ngIf="description.errors.required">Quiz Description is required</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="w100" appearance="outline">
+                                <mat-label>Maximum Marks</mat-label>
+                                <input 
+                                    type="text" 
+                                    [(ngModel)]="quiz.maxMarks"
+                                    #maxMarks="ngModel"
+                                    name="maxMarks" 
+                                    matInput 
+                                    required
+                                    placeholder="Enter Maximum Marks" 
+                                    pattern="^[0-9]*$"
+                                />
+                            </mat-form-field>
+                            <div *ngIf="maxMarks.invalid && maxMarks.touched" class="alert alert-danger">
+                                <div *ngIf="maxMarks.errors.required">Maximum Marks is required</div>
+                                <div *ngIf="maxMarks.errors.pattern">Maximum Marks must be a number</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="w100" appearance="outline">
+                                <mat-label>Number of Questions (At a time)</mat-label>
+                                <input 
+                                    type="text" 
+                                    [(ngModel)]="quiz.numberOfQuestions"
+                                    #numberOfQuestions="ngModel"
+                                    name="numberOfQuestions" 
+                                    matInput 
+                                    required
+                                    placeholder="Enter Number of Questions (At a time)" 
+                                    pattern="^[0-9]*$"
+                                />
+                            </mat-form-field>
+                            <div *ngIf="numberOfQuestions.invalid && numberOfQuestions.touched" class="alert alert-danger">
+                                <div *ngIf="numberOfQuestions.errors.required">Number of Questions is required</div>
+                                <div *ngIf="numberOfQuestions.errors.pattern">Number of Questions must be a number</div>
+                            </div>
+                        </div>
+                    </div>
+                    <mat-slide-toggle 
+                        class="mt-10 mb-20" 
+                        color="primary"
+                        [(ngModel)]="quiz.active"
+                        name="active"
+                    >
+                        Publish Quiz
+                    </mat-slide-toggle>
+                    <br />
+                    <mat-form-field class="w100" appearance="fill">
+                        <mat-label>Select Category</mat-label>
+                        <mat-select [(ngModel)] = "quiz.categoryId" name="categoryId" #categoryId="ngModel" required>
+                            <mat-option *ngFor="let category of categories" [value]="category.cid">
+                                {{ category.title }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div *ngIf="categoryId.invalid && categoryId.touched" class="alert alert-danger">
+                        <div *ngIf="categoryId.errors.required">Quiz Category is required</div>
+                    </div>
+
+                    <div class="container text-center-mt-20">
+                        <div class="row">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" mat-raised-button color="primary" [disabled]="!addQuizForm.valid">Add Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</mat-card>

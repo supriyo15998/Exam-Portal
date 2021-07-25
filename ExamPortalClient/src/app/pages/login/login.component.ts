@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   ngOnInit (): void {
   }
   loginFormSubmit () {
-    console.log(this.loginData);
     this.loginService.generateToken(this.loginData).subscribe(
       data => {
         console.log(data);
@@ -34,7 +33,7 @@ export class LoginComponent implements OnInit {
             this.snackBar.open(`Welcome ${user.username}`, '', {
               duration: 2000,
               horizontalPosition: 'left',
-              'verticalPosition': 'bottom',
+              verticalPosition: 'bottom',
               panelClass: ['success-snackbar']
             })
             //redirect based on role

@@ -8,7 +8,7 @@
   <span class="example-spacer"></span>
   <div class="navbar-links">
     <button 
-    mat-raised-button
+    mat-flat-button
     color="primary"
     *ngIf="!isLoggedIn"
     class="mr-20"
@@ -16,7 +16,7 @@
     Login
   </button>
     <button 
-    mat-raised-button
+    mat-flat-button
     color="primary"
       *ngIf="!isLoggedIn"
       routerLink="/signup">
@@ -24,7 +24,7 @@
     </button>
     <button 
       *ngIf="isLoggedIn && user"
-      mat-raised-button
+      mat-flat-button
       routerLink="/admin/profile"
       color="primary"
       >
@@ -33,7 +33,7 @@
 
     <button
       *ngIf="isLoggedIn"
-      mat-raised-button
+      mat-flat-button
       color="primary"
       (click)="logout()">
       Logout

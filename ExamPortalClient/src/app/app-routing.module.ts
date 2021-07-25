@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminGuard } from './guards/admin.guard';
 import { NormalGuard } from './guards/normal.guard';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -18,7 +23,12 @@ const routes: Routes = [
     path: 'admin', component: DashboardComponent, canActivate: [AdminGuard],
     children: [
       { path: '', component: WelcomeComponent },
-      { path: 'profile', component: ProfileComponent }
+      { path: 'profile', component: ProfileComponent },
+      { path: 'categories', component: ViewCategoriesComponent },
+      { path: 'add-category', component: AddCategoryComponent },
+      { path: 'view-quizzes', component: ViewQuizzesComponent },
+      { path: 'add-quiz', component: AddQuizComponent },
+      { path: 'edit-quiz/:qid', component: UpdateQuizComponent },
     ]
   },
   { path: 'user-dashboard', component: UserDashboardComponent, pathMatch: 'full', canActivate: [NormalGuard] }

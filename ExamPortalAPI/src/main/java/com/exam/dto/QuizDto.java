@@ -20,6 +20,8 @@ public class QuizDto {
 	@NotNull(message = "Category id can not be null")
 	private Long categoryId;
 
+	private boolean active;
+
 	public Long getQid() {
 		return qid;
 	}
@@ -66,6 +68,14 @@ public class QuizDto {
 
 	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 }

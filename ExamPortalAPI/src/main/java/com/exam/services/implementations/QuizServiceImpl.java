@@ -33,7 +33,7 @@ public class QuizServiceImpl implements QuizService {
 		quiz.setMaxMarks(String.valueOf(quizDto.getMaxMarks()));
 		quiz.setNumberOfQuestions(String.valueOf(quizDto.getNumberOfQuestions()));
 		quiz.setCategory(category);
-
+		quiz.setActive(quizDto.isActive());
 		return this.quizRepository.save(quiz);
 	}
 
