@@ -12,8 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.exam.services.implementations.UserDetailsServiceImpl;
@@ -43,10 +41,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 
 	// Testing purpose only for plain text passwords
-//	@Bean
-//	public PasswordEncoder passwordEncoder() {
-//		return NoOpPasswordEncoder.getInstance();
-//	}
+	// @Bean
+	// public PasswordEncoder passwordEncoder() {
+	// return NoOpPasswordEncoder.getInstance();
+	// }
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
