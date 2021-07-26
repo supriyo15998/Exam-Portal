@@ -1,0 +1,51 @@
+<mat-progress-bar *ngIf="isLoading" mode="query" class="mt-20"></mat-progress-bar>
+<div class="bootstrap-wrapper" *ngIf="questions.length == 0 && !isLoading">
+    <div class="row">
+        <div class="col-md-12">
+            
+            <mat-card class="mt-20">
+                <mat-card-content>
+                    <h1 class="text-center">No Questions Found !</h1>
+                </mat-card-content>
+            </mat-card>
+            <div class="container text-center mt-20">
+                <button mat-raised-button color="primary" [routerLink]="'/admin/add-question/' + qId">Add Question</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bootstrap-wrapper" *ngIf="questions.length > 0">
+    <h1 class="text-center">Questions of {{ questions[0].quiz.title }}</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container text-center">
+                <button mat-raised-button color="primary" [routerLink]="'/admin/add-question/' + qId">Add Question</button>
+            </div>
+            <mat-card *ngFor="let question of questions;let i = index" class="mt-20">
+                <mat-card-content>
+                    <p>Q. {{ i+1 }} <span>{{ question.content }}</span> </p>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>1) {{ question.option1 }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>2) {{ question.option2 }}</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p>3) {{ question.option3 }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p>3) {{ question.option3 }}</p>
+                            </div>
+                        </div>
+                        <mat-divider></mat-divider>
+                        <p class="mt-20"><b>Correct Answer: </b>{{ question.answer }}</p>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

@@ -40,12 +40,15 @@ public class QuizServiceImpl implements QuizService {
 	@Override
 	public Quiz updateQuiz(Long id, QuizDto quizDto) throws CategoryNotFoundException, QuizNotFoundException {
 		Quiz quiz = this.quizRepository.findById(id).orElseThrow(() -> new QuizNotFoundException(Helper.NO_QUIZ_FOUND));
-		Category category = this.categoryRepository.findById(quizDto.getCategoryId())
+//		Category category = this.categoryRepository.findById(quizDto.getCategoryId())
+//				.orElseThrow(() -> new CategoryNotFoundException(Helper.NO_CATEGORY_FOUND));
+		Category category = this.categoryRepository.findById(quizDto.getCategory().getCid())
 				.orElseThrow(() -> new CategoryNotFoundException(Helper.NO_CATEGORY_FOUND));
 		quiz.setTitle(quizDto.getTitle());
 		quiz.setDescription(quizDto.getDescription());
 		quiz.setMaxMarks(String.valueOf(quizDto.getMaxMarks()));
 		quiz.setNumberOfQuestions(String.valueOf(quizDto.getNumberOfQuestions()));
+		quiz.setActive(quizDto.isActive());
 		quiz.setCategory(category);
 		return this.quizRepository.save(quiz);
 	}

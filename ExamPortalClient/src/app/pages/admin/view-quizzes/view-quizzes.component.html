@@ -22,7 +22,7 @@
                     <p>{{ quiz.description }}</p><span class="badge bg-{{ quiz.active ? 'success' : 'danger'}}">{{ quiz.active ? 'ACTIVE' : 'INACTIVE' }}</span>
                 </mat-card-content>
                 <mat-card-action>
-                    <button mat-raised-button color="primary">
+                    <button mat-raised-button color="primary" [routerLink]="'/admin/view-questions/' + quiz.qid + '/' + quiz.title">
                         <mat-icon>quiz</mat-icon>
                         Questions
                     </button>

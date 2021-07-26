@@ -4,6 +4,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.exam.entities.Category;
+
 public class QuizDto {
 
 	private Long qid;
@@ -17,8 +19,10 @@ public class QuizDto {
 	@NotNull(message = "Number of questions can not be null")
 	@Min(value = 1, message = "Number of questions should be at least 1")
 	private Integer numberOfQuestions;
-	@NotNull(message = "Category id can not be null")
+	
 	private Long categoryId;
+
+	private Category category;
 
 	private boolean active;
 
@@ -76,6 +80,14 @@ public class QuizDto {
 
 	public void setActive(boolean active) {
 		this.active = active;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 }

@@ -1,0 +1,63 @@
+<!-- form loading condition should be question.quiz.quizId -->
+<div class="bootstrap-wrapper" *ngIf="question.quizId">
+    <div class="row mt-20">
+        <div class="col-md-12">
+            <h1 class="text-center">Adding Question to Quiz: {{ quiz.title }}</h1>
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-subtitle>
+                        <h2>Enter the details of new Question</h2>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <form class="mt-20" (ngSubmit)="addQuestion()">
+                        <mat-form-field class="w100" appearance="outline">
+                            <mat-label>Write Question Content</mat-label>
+                            <textarea matInput placeholder="Enter question content here" required></textarea>
+                        </mat-form-field>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="w100" appearance="outline">
+                                    <mat-label>Enter Option 1</mat-label>
+                                    <input type="text" name="option1" matInput required placeholder="Enter option 1 here" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="w100" appearance="outline">
+                                    <mat-label>Enter Option 2</mat-label>
+                                    <input type="text" name="option2" matInput required placeholder="Enter option 2 here" />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="w100" appearance="outline">
+                                    <mat-label>Enter Option 3</mat-label>
+                                    <input type="text" name="option3" matInput required placeholder="Enter option 3 here" />
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="w100" appearance="outline">
+                                    <mat-label>Enter Option 4</mat-label>
+                                    <input type="text" name="option4" matInput required placeholder="Enter option 4 here" />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <mat-form-field class="w50">
+                            <mat-label>Select Answer</mat-label>
+                            <mat-select required>
+                                <mat-option>Option 1</mat-option>
+                                <mat-option>Option 2</mat-option>
+                                <mat-option>Option 3</mat-option>
+                                <mat-option>Option 4</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div class="container text-center">
+                            <button mat-raised-button color="primary">Add Question</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

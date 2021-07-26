@@ -15,12 +15,20 @@ export class QuizService {
     return this.http.get(Helper.baseUrl + this.prefix + `get/all`);
   }
 
+  getQuiz (qid: number): Observable<any> {
+    return this.http.get(Helper.baseUrl + this.prefix + `get/${qid}`);
+  }
+
   createQuiz (quiz: Quiz): Observable<any> {
     return this.http.post(Helper.baseUrl + this.prefix + `create`, quiz);
   }
 
   removeQuiz (qid: number): Observable<any> {
     return this.http.delete(Helper.baseUrl + this.prefix + `delete/${qid}`);
+  }
+
+  alterQuiz (quiz: Quiz, id: number): Observable<any> {
+    return this.http.put(Helper.baseUrl + this.prefix + `update/${id}`, quiz);
   }
 
 }

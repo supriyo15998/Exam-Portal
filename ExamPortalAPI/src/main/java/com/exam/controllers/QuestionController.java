@@ -26,6 +26,7 @@ import com.exam.entities.Quiz;
 import com.exam.exceptions.QuestionNotFoundException;
 import com.exam.exceptions.QuizNotFoundException;
 import com.exam.exceptions.validations.ValidateQuestionException;
+import com.exam.helpers.Helper;
 import com.exam.helpers.SuccessMessage;
 import com.exam.services.QuestionService;
 import com.exam.services.QuizService;
@@ -65,12 +66,29 @@ public class QuestionController {
 			throws NumberFormatException, QuizNotFoundException, QuestionNotFoundException {
 		Quiz quiz = this.quizService.getQuiz(Long.parseLong(quizId));
 		Set<Question> questions = quiz.getQuestions();
+		if(questions.isEmpty())
+			throw new QuestionNotFoundException(Helper.NO_QUESTION_FOUND);
 		List<Question> questionList = new ArrayList<>(questions);
 		if (questionList.size() > Integer.parseInt(quiz.getNumberOfQuestions())) {
 			questionList = questionList.subList(0, Integer.parseInt(quiz.getNumberOfQuestions() + 1));
 		}
 		Collections.shuffle(questionList);
 		return new HashSet<>(questionList);
+	}
+	
+	@GetMapping("/get/quiz/all/{quizId}")
+	public Set<Question> viewQuestionsOfQuizAdmin(@PathVariable("quizId") String quizId)
+			throws NumberFormatException, QuizNotFoundException, QuestionNotFoundException {
+		Quiz quiz = this.quizService.getQuiz(Long.parseLong(quizId));
+		Set<Question> questions = quiz.getQuestions();
+		if(questions.isEmpty())
+			throw new QuestionNotFoundException(Helper.NO_QUESTION_FOUND);
+//		List<Question> questionList = new ArrayList<>(questions);
+//		if (questionList.size() > Integer.parseInt(quiz.getNumberOfQuestions())) {
+//			questionList = questionList.subList(0, Integer.parseInt(quiz.getNumberOfQuestions() + 1));
+//		}
+//		Collections.shuffle(questionList);
+		return new HashSet<>(questions);
 	}
 
 	@GetMapping("/get/question/{questionId}")

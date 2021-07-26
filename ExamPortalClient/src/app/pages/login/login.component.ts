@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
-// import { User } from 'src/app/entities/user';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +10,6 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  // user: User = new User();
   loginData = {
     username: '',
     password: ''
@@ -23,7 +21,6 @@ export class LoginComponent implements OnInit {
   loginFormSubmit () {
     this.loginService.generateToken(this.loginData).subscribe(
       data => {
-        console.log(data);
 
         this.loginService.setToken(data.token);
         this.loginService.getCurrentUser().subscribe(
@@ -57,11 +54,10 @@ export class LoginComponent implements OnInit {
         )
       },
       error => {
-        console.log(error);
         this.snackBar.open(error.error.messages[0], '', {
           duration: 2000,
           horizontalPosition: 'left',
-          'verticalPosition': 'bottom',
+          verticalPosition: 'bottom',
           panelClass: ['error-snackbar']
         })
       }
