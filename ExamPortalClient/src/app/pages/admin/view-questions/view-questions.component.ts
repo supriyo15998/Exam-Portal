@@ -16,6 +16,7 @@ export class ViewQuestionsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private questionService: QuestionService, private snackBar: MatSnackBar) { }
 
   ngOnInit (): void {
+    this.questions = []
     this.isLoading = true;
     this.qId = this.route.snapshot.params.qid;
     this.questionService.getQuestionsOfQuizAdmin(this.qId).subscribe(
@@ -35,4 +36,25 @@ export class ViewQuestionsComponent implements OnInit {
     )
   }
 
+  dropQuestion (questionId: number) {
+    if (confirm(`Are you sure want to delete question with id: ${questionId}`)) {
+      this.isLoading = true;
+      this.questionService.deleteQuestion(questionId).subscribe(
+        data => {
+          this.isLoading = false;
+          this.ngOnInit();
+        },
+        error => {
+          this.isLoading = false;
+          this.snackBar.open(error.error.messages[0], '', {
+            duration: 2000,
+            horizontalPosition: 'left',
+            verticalPosition: 'bottom',
+            panelClass: ['error-snackbar']
+          })
+        }
+      )
+    }
+
+  }
 }
