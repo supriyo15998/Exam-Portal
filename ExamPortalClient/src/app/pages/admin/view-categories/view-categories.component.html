@@ -1,16 +1,36 @@
 <mat-progress-bar *ngIf="isLoading" mode="query" class="mt-20"></mat-progress-bar>
 
-<mat-card class="mt-20">
-    <h1>All Categories</h1>
-    <mat-list>
-        <mat-list-item *ngFor="let category of categories">
-            <mat-icon mat-list-icon>category</mat-icon>
-            <div mat-line>{{ category.title }}</div>
-            <div mat-line>{{ category.description }}</div>
-            <mat-divider></mat-divider>
-        </mat-list-item>
-    </mat-list>
-    <div class="container text-center mt-20">
-        <button mat-raised-button color="primary" routerLink="/admin/add-category">Add Category</button>
-    </div>
-</mat-card>
+<h1>All Categories</h1>
+<mat-list>
+    <mat-card class="mt-20" *ngFor="let category of categories">
+        <div class="row">
+            <div class="col-md-10">
+                <mat-card-content>
+                    <mat-list-item>
+                        <mat-icon mat-list-icon>category</mat-icon>
+                        <div mat-line>{{ category.title }}</div>
+                        <div mat-line>{{ category.description }}</div>
+                        
+                        <mat-divider></mat-divider>
+                        
+                    </mat-list-item>
+                </mat-card-content>
+                <mat-card-action>
+                    <button mat-flat-button color="accent" class="ml-20" [routerLink]="'/admin/edit-category/' + category.cid">
+                        <mat-icon>edit</mat-icon>
+                        Edit
+                    </button>
+                </mat-card-action>
+            </div>
+            <div class="col-md-2">
+                <button mat-fab color="warn" (click)="deleteCategory(category.cid)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+        </div>
+        
+    </mat-card>
+</mat-list>
+<div class="container text-center mt-20">
+    <button mat-raised-button color="primary" routerLink="/admin/add-category">Add Category</button>
+</div>
