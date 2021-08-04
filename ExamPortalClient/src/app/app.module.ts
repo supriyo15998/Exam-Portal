@@ -36,6 +36,8 @@ import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.compo
 import { ViewQuestionsComponent } from './pages/admin/view-questions/view-questions.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { UpdateCategoryComponent } from './pages/admin/update-category/update-category.component';
+import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -58,7 +60,8 @@ import { UpdateCategoryComponent } from './pages/admin/update-category/update-ca
     UpdateQuizComponent,
     ViewQuestionsComponent,
     AddQuestionComponent,
-    UpdateCategoryComponent
+    UpdateCategoryComponent,
+    UpdateQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ import { UpdateCategoryComponent } from './pages/admin/update-category/update-ca
     MatCardModule,
     MatToolbarModule,
     MatListModule,
-    HttpClientModule
+    HttpClientModule,
+    CKEditorModule
   ],
   providers: [
     authInterceptorProviders

@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-md-10">
                         <mat-card-content>
-                            <p>Q. {{ i+1 }} <span>{{ question.content }}</span> </p>
+                            <p>Q. {{ i+1 }} <span [innerHTML]="question.content"></span></p>
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -47,6 +47,12 @@
                                 <p class="mt-20"><b>Correct Answer: </b>{{ question.answer }}</p>
                             </div>
                         </mat-card-content>
+                        <mat-card-action>
+                            <button mat-flat-button color="accent" class="ml-20" [routerLink]="'/admin/edit-question/' + question.questionId">
+                                <mat-icon>edit</mat-icon>
+                                Edit
+                            </button>
+                        </mat-card-action>
                     </div>
                     <div class="col-md-2">
                         <button mat-fab color="warn" (click)="dropQuestion(question.questionId)">

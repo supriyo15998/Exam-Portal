@@ -24,4 +24,12 @@ export class QuestionService {
     return this.http.delete(Helper.baseUrl + `${this.prefix}delete/${questionId}`);
   }
 
+  getQuestion (questionId: number): Observable<any> {
+    return this.http.get(Helper.baseUrl + `${this.prefix}get/question/${questionId}`);
+  }
+
+  updateQuestion (questionId: number, question: Question): Observable<any> {
+    return this.http.put(Helper.baseUrl + `${this.prefix}update/${questionId}`, question);
+  }
+
 }

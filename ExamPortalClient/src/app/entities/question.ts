@@ -2,7 +2,7 @@ import { Quiz } from "./quiz"
 
 export class Question {
     questionId: number
-    content: string
+    content: string = ''
     image: string
     option1: string
     option2: string

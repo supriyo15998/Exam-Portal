@@ -6,6 +6,7 @@ import { Question } from 'src/app/entities/question';
 import { Quiz } from 'src/app/entities/quiz';
 import { QuestionService } from 'src/app/services/question.service';
 import { QuizService } from 'src/app/services/quiz.service';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-add-question',
@@ -13,6 +14,7 @@ import { QuizService } from 'src/app/services/quiz.service';
   styleUrls: ['./add-question.component.css']
 })
 export class AddQuestionComponent implements OnInit {
+  public Editor = ClassicEditor;
   @ViewChild("addQuestionForm")
   private form: NgForm;
   quizId;

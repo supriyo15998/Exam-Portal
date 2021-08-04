@@ -58,7 +58,7 @@ public class QuestionController {
 		if (br.hasErrors())
 			throw new ValidateQuestionException(br.getFieldErrors());
 		Question question = this.questionService.updateQuestion(Long.parseLong(questionId), questionDto);
-		return new SuccessMessage("Question id: " + question.getQuestionId() + " added successfully !");
+		return new SuccessMessage("Question id: " + question.getQuestionId() + " updated successfully !");
 	}
 
 	@GetMapping("/get/quiz/{quizId}")

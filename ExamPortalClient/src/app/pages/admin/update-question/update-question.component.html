@@ -1,18 +1,17 @@
-<!-- form loading condition should be question.quiz.quizId -->
 <mat-progress-bar *ngIf="isLoading" mode="query" class="mt-20"></mat-progress-bar>
-<div class="bootstrap-wrapper" *ngIf="question.quizId">
+<div class="bootstrap-wrapper" *ngIf="question.questionId">
     <div class="row mt-20">
         <div class="col-md-12">
-            <h1 class="text-center">Adding Question to Quiz: {{ quiz.title }}</h1>
+            <h1 class="text-center">Update Question</h1>
             <mat-card>
                 <mat-card-header>
                     <mat-card-subtitle>
-                        <h2>Enter the details of new Question</h2>
+                        <h2>Enter the details of updated Question</h2>
                     </mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
-                    <form #addQuestionForm="ngForm" class="mt-20" (ngSubmit)="addQuestion()">
-                        <!-- <mat-form-field class="w100" appearance="outline">
+                    <form #updateQuestionForm="ngForm" class="mt-20" (ngSubmit)="updateQuestion()">
+                        <mat-form-field class="w100" appearance="outline">
                             <mat-label>Write Question Content</mat-label>
                             <textarea 
                                 matInput 
@@ -22,19 +21,10 @@
                                 placeholder="Enter question content here" 
                                 required>
                             </textarea>
-                        </mat-form-field> -->
-                        <ckeditor 
-                            [editor]="Editor"
-                            name="content"
-                            #content="ngModel"
-                            [config]="{ placeholder: 'Enter question content here' }"
-                            [(ngModel)]="question.content"
-                            class="mb-20"
-                        >   
-                        </ckeditor>
-                        <!-- <div *ngIf="content.invalid && content.touched" class="alert alert-danger">
+                        </mat-form-field>
+                        <div *ngIf="content.invalid && content.touched" class="alert alert-danger">
                             <div *ngIf="content.errors.required">Question content is required</div>
-                        </div> -->
+                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field class="w100" appearance="outline">
@@ -120,7 +110,7 @@
                             </div>
                         </mat-form-field>
                         <div class="container text-center">
-                            <button mat-raised-button color="primary" [disabled]="!addQuestionForm.valid">Add Question</button>
+                            <button mat-raised-button color="primary" [disabled]="!updateQuestionForm.valid">Update Question</button>
                         </div>
                     </form>
                 </mat-card-content>
