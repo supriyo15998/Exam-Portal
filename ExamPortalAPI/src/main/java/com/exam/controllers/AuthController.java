@@ -50,7 +50,7 @@ public class AuthController {
 		return ResponseEntity.ok(new JwtResponse(token));
 	}
 	
-	@GetMapping("/current-user")
+	@GetMapping("/platform/current-user")
 	public User getCurrentUser(Principal principal) {
 		return ((User)this.userDetailsService.loadUserByUsername(principal.getName()));
 	}
