@@ -30,6 +30,7 @@ public class User implements UserDetails {
 	private String lastName;
 	private String email;
 	private String phone;
+	private String address;
 	private boolean enabled = true;
 	private String profile;
 	// user many roles
@@ -61,6 +62,14 @@ public class User implements UserDetails {
 
 	public void setProfile(String profile) {
 		this.profile = profile;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public Set<UserRole> getUserRoles() {
