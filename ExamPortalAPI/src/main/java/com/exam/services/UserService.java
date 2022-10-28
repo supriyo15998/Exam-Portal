@@ -13,4 +13,5 @@ public interface UserService {
 	public User getUserByUsername(String username) throws UserNotFoundException;
 	public User getUserByEmail(String email) throws UserNotFoundException;
 	public SuccessMessage deleteUser(Long userId) throws UserNotFoundException;
+	public User updateUser(Long userId) throws UserNotFoundException;
 }
