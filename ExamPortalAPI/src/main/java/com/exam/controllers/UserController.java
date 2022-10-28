@@ -74,5 +74,26 @@ public class UserController {
 	}
 	
 	//endpoint for update user
+	@PutMapping("/update/{userId}")
+	public ResponseEntity<User> updateUser(@RequestBody User user) throws UserAlreadyExistsException {
+		User userToSave = this.userService.getUserByEmail(email);
+		userToSave.setProfile("default.png");
+		userToSave.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
+		Set<UserRole> roles = new HashSet<>();
+		Role role = new Role();
+		
+//		role.setRoleId(45L);
+//		role.setRoleName(Helper.ADMIN_USER);
+		role.setRoleId(44L);
+		role.setRoleName(Helper.NORMAL_USER);
+
+		UserRole userRole = new UserRole();
+		userRole.setUser(userToSave);
+		userRole.setRole(role);
+
+		roles.add(userRole);
+		User savedUser = this.userService.updateUser(userToSave, roles);
+		return new ResponseEntity<User>(savedUser, HttpStatus.OK);
+	}
 
 }
