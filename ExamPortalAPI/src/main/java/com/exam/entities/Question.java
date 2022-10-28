@@ -26,6 +26,7 @@ public class Question {
 	private String option4;
 
 	private String answer;
+	private tring hint;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Quiz quiz;
@@ -53,6 +54,14 @@ public class Question {
 
 	public void setQuestionId(Long questionId) {
 		this.questionId = questionId;
+	}
+
+	public Long getHint() {
+		return hint;
+	}
+
+	public void setHint(Long hint) {
+		this.hint = hint;
 	}
 
 	public String getContent() {
